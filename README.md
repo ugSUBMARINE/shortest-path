@@ -15,4 +15,4 @@ In order to see all parameters run:
 
 To run the program in default mode run:
 
-`python3 shortest_protein_path.py -f XXX.pdb`
+`python3 shortest_protein_path.py -f /PATH/TO/PDB/FILE`
