@@ -54,11 +54,17 @@ def search(
         )
         print(f"Vertices in shortest path:\n{' - '.join(rid[nodes])}")
     if pymol:
-        for i in rcoords[nodes].astype(str):
+        prev_point = None
+        for ci,i in enumerate(rcoords[nodes].astype(str)):
             print(
-                "pseudoatom tmpPoint2, resi=40, chain=ZZ, b=40,"
+                f"pseudoatom tmpPoint{ci}, resi=40, chain=ZZ, b=40,"
                 f"color=tv_blue, pos=[{', '.join(i)}]"
             )
+            if ci > 0:
+                print(f"distance d{ci}, tmpPoint{prev_point}, tmpPoint{ci}")
+            prev_point = ci
+        print("group shortest_path, d* tmpPoint*")
+
 
 
 def arg_dict() -> dict:

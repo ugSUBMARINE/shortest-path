@@ -282,8 +282,8 @@ def build_graph(
 ]:
     """creates graph of interacting residues
     :parameter
-        - pdb_filepath:
-          filepath to the pdb file of the protein of interest
+        - data, coords, dist_matrix:
+          returns of pseudoatom_positions or atom_interaction_matrix
         - dist_th:
           maximum distance in \u212B of atoms of two residues to be seen as interacting
     :return
