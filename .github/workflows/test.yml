@@ -37,3 +37,6 @@ jobs:
     - name: Test shortest path in protein 
       shell: bash
       run: python3 shortest_protein_path.py -f test_data/gb1.pdb
+    - name: Test minimum spanning tree in protein 
+      shell: bash
+      run: python3 minimum_spanning_tree.py -f test_data/gb1.pdb
