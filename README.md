@@ -3,8 +3,10 @@
 This repository contains two programs:
 *   **shortest_protein_path** 
     * Find the shortest path (via Dijkstra's shortest path algorithm) between either the two furthest apart vertices (side chains) (default) or between two selected vertices (residues in a protein structure).
+        ![alt text](https://github.com/ugSUBMARINE/shortest-path/blob/master/test_data/sp.png?raw=true)
 *   **minimum_spanning_tree**
     * Find the minimum spanning tree (via Prim's minimum spanning tree algorithm) between all connected vertices (side chains with a distance lower than the threshold) using distance matrix.
+        ![alt text](https://github.com/ugSUBMARINE/shortest-path/blob/master/test_data/mst.png?raw=true)
 
 To run each program the pdb file of the protein of interest is needed.
 
