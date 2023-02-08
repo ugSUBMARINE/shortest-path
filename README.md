@@ -25,6 +25,14 @@ If needed, commands that create pseudoatoms and distances for pymol that represe
 *optional:*
 *  [Anaconda or Miniconda](https://docs.anaconda.com/anaconda/install/index.html)
 
+
+In order to install the required packages run:
+```
+python3 -m venv /PATH/TO/YOUR/VENV
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
 In order to see all parameters run:
 
 `python3 shortest_protein_path.py -h`
