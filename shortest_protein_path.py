@@ -33,7 +33,14 @@ def search(
     if any([start_residue is None, end_residue is None]):
         max_dists_inds = np.unravel_index(np.argmax(dm, axis=None), dm.shape)
     else:
-        max_dists_inds = (start_residue, end_residue)
+        start_ind = np.where(rid == start_residue)[0]
+        end_ind = np.where(rid == end_residue)[0]
+        start_check = len(start_ind) == 0
+        end_check = len(end_ind) == 0
+        if any([start_check, end_check]):
+            raise ValueError("Residues search for start and end residue failed - "
+                    f"Start found: {start_check}, End found: {end_check}")
+        max_dists_inds = (start_ind[0], end_ind[0])
 
     # get shortest path
     v, d, pv = dijkstra(graph, max_dists_inds[0], max_dists_inds[1], silent=silent)
@@ -64,6 +71,8 @@ def search(
                 print(f"distance d{ci}, tmpPoint{prev_point}, tmpPoint{ci}")
             prev_point = ci
         print("group shortest_path, d* tmpPoint*")
+
+    return nodes, dist
 
 
 
@@ -99,18 +108,20 @@ def arg_dict() -> dict:
     parser.add_argument(
         "-sr",
         "--start_residue",
-        type=int,
+        type=str,
         required=False,
         default=None,
-        help="index of the start residue of the path",
+        help="Residue ID of the start residue in the path like 'MET-A-1' = "
+        "'AminoAcid3Letter-Chain-ResideNumber'",
     )
     parser.add_argument(
         "-er",
         "--end_residue",
-        type=int,
+        type=str,
         required=False,
         default=None,
-        help="index of the end residue of the path",
+        help="Residue ID of the end residue in the path like 'MET-A-1' = "
+        "'AminoAcid3Letter-Chain-ResideNumber'",
     )
     parser.add_argument(
         "-s",
